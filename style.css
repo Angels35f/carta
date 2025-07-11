@@ -1,0 +1,210 @@
+body {
+  background: linear-gradient(to bottom right, #1e1b2e, #44166d);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 400px;
+}
+
+input, select, button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  margin: 10px 0;
+}
+
+input {
+  width: 200px;
+  text-align: center;
+}
+
+button {
+  background-color: #ffffffcc;
+  color: #2e0a3d;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 10px;
+  min-width: 100px;
+}
+
+button:hover {
+  background-color: #fff;
+}
+
+.seccion {
+  display: none;
+  margin: 40px auto;
+  padding: 32px 24px;
+  min-height: 320px;    /* Altura mínima para que no se vea pequeño */
+  min-width: 260px;     /* Ancho mínimo para móviles */
+  max-width: 500px;     /* Ancho máximo para pantallas grandes */
+  width: 90vw;          /* Ocupa el 90% del ancho de la pantalla */
+  border-radius: 18px;
+  background: #ffffff0c;
+  box-shadow: 0 2px 24px #0002;
+  box-sizing: border-box;
+}
+
+#resultado {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+audio {
+  margin-top: 20px;
+}
+
+.visible {
+  display: block;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejoras para móviles */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    font-size: 20px;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .seccion {
+    min-height: 60vh;      /* Más alto */
+    max-width: 95vw;       /* Más ancho */
+    width: 95vw;
+    margin-top: 10vh;      /* Centrado vertical */
+    padding: 24px 10px;    /* Más espacio interno */
+  }
+  h1, h2 {
+    font-size: 2em;
+  }
+  p, label {
+    font-size: 1.2em;
+  }
+  input, select, button {
+    width: 100%;
+    font-size: 22px;
+    box-sizing: border-box;
+  }
+  #historial {
+    max-width: 100%;
+    font-size: 16px;
+    padding: 8px;
+  }
+  audio {
+    width: 100%;
+  }
+}
+
+/* Mejoras para móviles y pantallas grandes */
+@media (max-width: 900px) {
+  body {
+    padding: 0;
+    font-size: 24px;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .seccion {
+    margin-top: 40px;
+    padding: 24px 8px;
+    max-width: 98vw;
+    width: 100%;
+    border-radius: 16px;
+    background: #ffffff0c;
+    box-shadow: 0 2px 16px #0002;
+  }
+  h1, h2 {
+    font-size: 2.4em;
+  }
+  p, label {
+    font-size: 1.4em;
+  }
+  input, select, button {
+    width: 100%;
+    font-size: 26px;
+    box-sizing: border-box;
+  }
+  #historial {
+    max-width: 100%;
+    font-size: 18px;
+    padding: 10px;
+  }
+  audio {
+    width: 100%;
+  }
+}
+
+/* Para pantallas muy grandes (como iPhone 15 Pro Max en horizontal) */
+@media (min-width: 900px) {
+  .seccion {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    border-radius: 18px;
+    background: #ffffff0c;
+    box-shadow: 0 2px 24px #0002;
+  }
+  h1, h2 {
+    font-size: 2.2em;
+  }
+  input, select, button {
+    font-size: 24px;
+  }
+}
+
+/* Corazones animados en el fondo */
+.fondo-corazones {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.corazon {
+  position: absolute;
+  font-size: 2.2em;
+  opacity: 0.25;
+  animation: flotar 8s linear infinite;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(110vh) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  30% {
+    transform: translateY(70vh) translateX(20px) scale(1.1) rotate(-10deg);
+    opacity: 0.4;
+  }
+  60% {
+    transform: translateY(30vh) translateX(-20px) scale(1.15) rotate(15deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2) rotate(30deg);
+    opacity: 0;
+  }
+}

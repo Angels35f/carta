@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un rincón secreto 💌</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="fondo-corazones">
+    <span class="corazon" style="left:10%; animation-delay:0s; animation-duration:7s; font-size:2em;">💖</span>
+    <span class="corazon" style="left:25%; animation-delay:2s; animation-duration:9s; font-size:2.5em;">💗</span>
+    <span class="corazon" style="left:40%; animation-delay:1.5s; animation-duration:8s; font-size:1.8em;">💘</span>
+    <span class="corazon" style="left:60%; animation-delay:3s; animation-duration:10s; font-size:2.2em;">💝</span>
+    <span class="corazon" style="left:75%; animation-delay:0.5s; animation-duration:7.5s; font-size:2em;">💞</span>
+    <span class="corazon" style="left:90%; animation-delay:2.5s; animation-duration:8.5s; font-size:2.3em;">💓</span>
+  </div>
+
+  <!-- Sección 1: pregunta clave -->
+  <div id="seccionClave" class="seccion visible">
+    <h1>Este rincón es solo para ti 💭</h1>
+    <p>Para continuar, responde una pregunta.<br>No hay presión, solo sigue tu instinto.</p>
+    <label for="respuesta">¿Qué palabra usamos siempre cuando estamos bien?</label><br>
+    <input type="text" id="respuesta" placeholder="Tu palabra especial...">
+    <br>
+    <button onclick="verificarClave()">Continuar</button>
+    <button onclick="volver('seccionClave')">Volver</button>
+  </div>
+
+  <!-- Sección 2: juego del número -->
+  <div id="seccionJuego" class="seccion">
+    <h2>💫 Adivina el código secreto</h2>
+    <p>Escoge un modo y prueba suerte…</p>
+    <label for="modo">Modo:</label>
+    <select id="modo" onchange="reiniciarHistorial()">
+      <option value="facil">Fácil</option>
+      <option value="dificil">Difícil</option>
+    </select>
+    <br>
+    <input type="text" id="entrada" maxlength="5" placeholder="5 números">
+    <br>
+    <button class="check" onclick="verificarCodigo()">Comprobar</button>
+    <div id="resultado"></div>
+    <div id="historial" style="margin-top:15px; text-align:left; max-width:300px; max-height:120px; overflow-y:auto; border-radius:6px; background:#ffffff18; padding:8px;"></div>
+    <button onclick="volver('seccionJuego')">Volver</button>
+  </div>
+
+  <!-- Sección 3: final con audio -->
+  <div id="seccionFinal" class="seccion">
+    <h2>✨ Llegaste al final...</h2>
+    <p>Esto no es un episodio, ni una canción. Es solo una parte de mí para ti.</p>
+    <audio controls>
+      <source src="audio.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+    <p style="margin-top: 20px;">Gracias por llegar hasta aquí. Te quiero ❤️</p>
+    <button onclick="volver('seccionFinal')">Volver</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
