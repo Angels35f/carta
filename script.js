@@ -1,17 +1,18 @@
 // Sección 1 → Sección 2
 function verificarClave() {
-  const clave = "corazon"; // ← Cambia por tu palabra clave
+  const clave = "corazón"; 
   const entrada = document.getElementById("respuesta").value.toLowerCase().trim();
   if (entrada === clave) {
+    mostrarAnimacionAcierto();
     mostrarSeccion("seccionJuego");
   } else {
-    alert("Hmm... no es la palabra. Intenta otra vez 🌙");
+    alert("Hmm... no es la palabra. Intenta otra vez ");
   }
 }
 
 // Sección 2 → Sección 3
-const secretoFacil = "12345";    // Código para modo fácil
-const secretoDificil = "67890";  // Código para modo difícil
+const secretoFacil = "58081";    
+const secretoDificil = "63878";  
 
 // Historial de intentos por modo
 let historialFacil = [];
@@ -26,7 +27,6 @@ function actualizarHistorial() {
     return;
   }
   historialDiv.innerHTML = "<b>Historial:</b><ul style='padding-left:18px; margin:0;'>";
-  // Mostrar todos los intentos, el scroll lo controla el CSS
   historial.forEach((item) => {
     historialDiv.innerHTML += `<li><code>${item}</code></li>`;
   });
@@ -34,12 +34,10 @@ function actualizarHistorial() {
 }
 
 function reiniciarHistorial() {
-  // Al cambiar de modo, solo actualiza la vista, no borra el historial del otro modo
   actualizarHistorial();
   document.getElementById("resultado").textContent = "";
 }
 
-// Modifica verificarCodigo para guardar el intento
 function verificarCodigo() {
   const modo = document.getElementById("modo").value;
   const entrada = document.getElementById("entrada").value.trim();
@@ -50,7 +48,6 @@ function verificarCodigo() {
     return;
   }
 
-  // Guardar intento en el historial correspondiente
   if (modo === "facil") {
     historialFacil.push(entrada);
   } else {
@@ -59,7 +56,6 @@ function verificarCodigo() {
   actualizarHistorial();
 
   let correctos = 0;
-  // Selecciona el código secreto según el modo
   const secreto = modo === "facil" ? secretoFacil : secretoDificil;
 
   if (modo === "facil") {
@@ -84,11 +80,12 @@ function verificarCodigo() {
     }
 
     if (entrada === secreto) {
+      mostrarAnimacionAcierto();
       mostrarSeccion("seccionFinal");
     } else if (correctosTemporales === 5) {
-      resultado.textContent = `✅ Todos los números están correctos, pero el orden no.\n🔢 Números en su posición: ${enOrden}/5`;
+      resultado.textContent = `Todos los números están correctos, pero el orden no.\n Números en su posición: ${enOrden}/5`;
     } else {
-      resultado.textContent = `✔️ ${correctosTemporales} número(s) correctos.\n🔢 ${enOrden} en la posición correcta.`;
+      resultado.textContent = ` ${correctosTemporales} número(s) correctos.\n ${enOrden} en la posición correcta.`;
     }
   } else {
     for (let i = 0; i < 5; i++) {
@@ -100,6 +97,7 @@ function verificarCodigo() {
   }
 
   if (entrada === secreto) {
+    mostrarAnimacionAcierto();
     mostrarSeccion("seccionFinal");
   }
 }
@@ -120,6 +118,25 @@ function volver(seccionActual) {
   } else if (seccionActual === "seccionFinal") {
     mostrarSeccion("seccionJuego");
   } else {
-    // Si está en la primera sección, no hace nada o puedes ocultar el botón
   }
+}
+
+function mostrarAnimacionAcierto() {
+  const anim = document.createElement('img');
+  anim.src = "./assets/corazon-win.gif";
+  anim.alt = "Acierto";
+  anim.style.position = "fixed";
+  anim.style.top = "50%";
+  anim.style.left = "50%";
+  anim.style.transform = "translate(-50%, -50%) scale(1)";
+  anim.style.width = "300px"; 
+  anim.style.opacity = "1";
+  anim.style.transition = "opacity 1s, transform 1s";
+  anim.style.zIndex = "9999";
+  document.body.appendChild(anim);
+  setTimeout(() => {
+    anim.style.opacity = "0";
+    anim.style.transform = "translate(-50%, -50%) scale(1.5)";
+  }, 700);
+  setTimeout(() => anim.remove(), 1700);
 }

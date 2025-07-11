@@ -36,13 +36,15 @@ button {
   background-color: #ffffffcc;
   color: #2e0a3d;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
   margin-bottom: 10px;
   min-width: 100px;
 }
 
-button:hover {
+button:hover, button:focus {
   background-color: #fff;
+  transform: scale(1.07);
+  box-shadow: 0 4px 16px #0003;
 }
 
 .seccion {
@@ -57,6 +59,9 @@ button:hover {
   background: #ffffff0c;
   box-shadow: 0 2px 24px #0002;
   box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
 }
 
 #resultado {
@@ -70,12 +75,14 @@ audio {
 
 .visible {
   display: block;
-  animation: fadeIn 1s ease-in;
+  opacity: 1;
+  pointer-events: auto;
+  animation: fadeIn 0.7s;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: scale(0.97) translateY(10px);}
+  to { opacity: 1; transform: scale(1) translateY(0);}
 }
 
 /* Mejoras para móviles */
@@ -205,6 +212,21 @@ audio {
   }
   100% {
     transform: translateY(-10vh) scale(1.2) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes explotar {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.25;
+  }
+  70% {
+    transform: scale(2.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
     opacity: 0;
   }
 }
