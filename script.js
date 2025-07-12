@@ -140,3 +140,15 @@ function mostrarAnimacionAcierto() {
   }, 700);
   setTimeout(() => anim.remove(), 1700);
 }
+const botonCarta = document.getElementById("mostrarCartaBtn");
+const carta = document.getElementById("cartaEscrita");
+
+botonCarta.addEventListener("click", () => {
+  carta.classList.toggle("visible");
+
+  if (carta.classList.contains("visible")) {
+    botonCarta.textContent = "Ocultar carta";
+  } else {
+    botonCarta.textContent = "💌 El texto original";
+  }
+});
